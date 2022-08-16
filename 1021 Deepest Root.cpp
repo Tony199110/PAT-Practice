@@ -57,7 +57,16 @@ int main() {
 	}
 	if (cnt >= 2) printf("Error: %d components", cnt);
 	else {
-
+		temp.clear();
+		maxheight = 0;
+		fill(visit, visit + 10010, false);
+		dfs(s1, 1);  // 第二次dfs，从任选的s1节点出发，即可找到距离最长的所有节点
+		for (int i = 0; i < temp.size(); i++) {
+			s.insert(temp[i]);  // 存入集合s，集合会自动去重和排序
+		}
+		for (auto it = s.begin(); it != s.end(); it++) {
+			printf("%d\n", *it);
+		}
 	}
 	return 0;
 }
